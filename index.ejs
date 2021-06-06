@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <title>URL Shortner</title>
+</head>
+<body>
+  <div class="container">
+    <h1>URL Shortner</h1>
+    <form action="/shortUrls" method="POST" class="my-4 form-inline" style="display: block; width: 100%;">
+      <label for="longURL" class="sr-only">URL</label>
+      <input required placeholder="URL" type="url" name="longURL" id="longURL" class="form-control col mr-2">
+      <button class="btn btn-success" type="submit" style="align-items: center;">GENERATE</button>
+    </form>
+    
+    <table class="table table-responsive">
+      <thead>
+        <tr>
+          <th>LONG URL</th>
+          <th>GENERATED SHORT URL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% shortUrls.forEach(shortUrl => { %>
+          <tr>
+            <td><a href="<%= shortUrl.original %>"><%= shortUrl.original %></a></td>
+            <td><a href="<%= shortUrl.generated %>"><%= shortUrl.generated %></a></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
